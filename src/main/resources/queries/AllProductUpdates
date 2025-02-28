@@ -1,0 +1,71 @@
+query AllProductUpdates($after: String, $alreadyReleased: Boolean, $ids: [String!], $locale: String!, $moduleIdentifier: String, $preview: Boolean!, $releasedAfter: Int, $releasedToday: Boolean, $slug: String) {
+  productUpdates {
+    updatesConnection(
+      after: $after
+      alreadyReleased: $alreadyReleased
+      first: 50
+      ids: $ids
+      locale: $locale
+      moduleIdentifier: $moduleIdentifier
+      preview: $preview
+      releasedAfter: $releasedAfter
+      releasedToday: $releasedToday
+      slug: $slug
+    ) {
+      edges {
+        cursor
+        node {
+          id
+          authorName
+          authorPosition
+          chargebeeModuleName
+          featureRelated {
+            id
+            featureIdentifier
+            name
+            __typename
+          }
+          longDescription
+          marketplaceSlug
+          media {
+            height
+            url
+            width
+            __typename
+          }
+          productModule {
+            id
+            name
+            urlIdentifier
+            __typename
+          }
+          releaseDate
+          shortDescription
+          slug
+          thumbnail {
+            height
+            src
+            width
+            __typename
+          }
+          title
+          __typename
+        }
+        __typename
+      }
+      pageInfo {
+        ...PaginatedQueryPageInfo
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment PaginatedQueryPageInfo on PageInfo {
+  endCursor
+  hasNextPage
+  startCursor
+  __typename
+}

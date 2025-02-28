@@ -1,0 +1,12 @@
+query GetNpsVisibility($origin: String!) {
+  nps {
+    widgetVisibilitiesConnection(origin: $origin) {
+      nodes {
+        shouldSee
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}

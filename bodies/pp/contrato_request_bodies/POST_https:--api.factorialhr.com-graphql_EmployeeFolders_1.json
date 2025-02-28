@@ -1,0 +1,9 @@
+{
+    "operationName": "EmployeeFolders",
+    "variables": {
+        "employeeIds": [
+            556591
+        ]
+    },
+    "query": "query EmployeeFolders($employeeIds: [Int!]) {\n  employees {\n    employees(ids: $employeeIds) {\n      id\n      folders {\n        ...DocumentsEmployeeFolderItem\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment DocumentsFolderItem on DocumentsFolder {\n  id\n  active\n  counterDocuments\n  counterSubfolders\n  identifier\n  isCompany\n  isEmployee\n  isExpense\n  isReadonly\n  managePermission\n  name\n  parentFolder {\n    id\n    __typename\n  }\n  rootParentFolder {\n    id\n    __typename\n  }\n  showOnly\n  slug\n  space\n  type\n  url\n  __typename\n}\n\nfragment DocumentsEmployeeFolderItem on DocumentsEmployeeFolder {\n  id\n  _policies {\n    edit {\n      id\n      can\n      __typename\n    }\n    __typename\n  }\n  employeeId\n  folder {\n    ...DocumentsFolderItem\n    __typename\n  }\n  folderId\n  __typename\n}"
+}

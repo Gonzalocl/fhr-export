@@ -1,0 +1,60 @@
+query EmployeeFolders($employeeIds: [Int!]) {
+  employees {
+    employees(ids: $employeeIds) {
+      id
+      folders {
+        ...DocumentsEmployeeFolderItem
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment DocumentsFolderItem on DocumentsFolder {
+  id
+  active
+  counterDocuments
+  counterSubfolders
+  identifier
+  isCompany
+  isEmployee
+  isExpense
+  isReadonly
+  managePermission
+  name
+  parentFolder {
+    id
+    __typename
+  }
+  rootParentFolder {
+    id
+    __typename
+  }
+  showOnly
+  slug
+  space
+  type
+  url
+  __typename
+}
+
+fragment DocumentsEmployeeFolderItem on DocumentsEmployeeFolder {
+  id
+  _policies {
+    edit {
+      id
+      can
+      __typename
+    }
+    __typename
+  }
+  employeeId
+  folder {
+    ...DocumentsFolderItem
+    __typename
+  }
+  folderId
+  __typename
+}

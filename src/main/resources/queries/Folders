@@ -1,0 +1,52 @@
+query Folders($active: Boolean, $ascendantFolderId: Int, $company: Boolean, $companyId: Int, $employee: Boolean, $employeeId: Int, $ids: [Int!], $parentFolderId: Int, $rootFolders: Boolean, $sort: String, $space: String, $url: String, $withCounters: Boolean, $withUnfilteredCounters: Boolean) {
+  documents {
+    folders(
+      active: $active
+      ascendantFolderId: $ascendantFolderId
+      company: $company
+      companyId: $companyId
+      employee: $employee
+      employeeId: $employeeId
+      ids: $ids
+      parentFolderId: $parentFolderId
+      rootFolders: $rootFolders
+      sort: $sort
+      space: $space
+      url: $url
+      withCounters: $withCounters
+      withUnfilteredCounters: $withUnfilteredCounters
+    ) {
+      ...DocumentsFolderItem
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment DocumentsFolderItem on DocumentsFolder {
+  id
+  active
+  counterDocuments
+  counterSubfolders
+  identifier
+  isCompany
+  isEmployee
+  isExpense
+  isReadonly
+  managePermission
+  name
+  parentFolder {
+    id
+    __typename
+  }
+  rootParentFolder {
+    id
+    __typename
+  }
+  showOnly
+  slug
+  space
+  type
+  url
+  __typename
+}

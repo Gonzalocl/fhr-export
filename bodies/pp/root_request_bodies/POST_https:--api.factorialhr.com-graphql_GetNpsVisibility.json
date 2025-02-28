@@ -1,0 +1,7 @@
+{
+    "operationName": "GetNpsVisibility",
+    "variables": {
+        "origin": "documents"
+    },
+    "query": "query GetNpsVisibility($origin: String!) {\n  nps {\n    widgetVisibilitiesConnection(origin: $origin) {\n      nodes {\n        shouldSee\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}"
+}

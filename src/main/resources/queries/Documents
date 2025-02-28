@@ -1,0 +1,109 @@
+query Documents($id: Int, $afterDate: ISO8601Date, $beforeDate: ISO8601Date, $byBookeeperDocuments: Boolean, $byPendingAssignment: Boolean, $byTrashBin: Boolean, $byWithoutFolder: Boolean, $companyId: Int, $employeeId: Int, $employeeIds: [Int!], $excludedType: String, $folderId: Int, $fromEmployees: Boolean, $ids: [Int!], $incidenceId: Int, $leaveId: Int, $payrollHiringId: Int, $relationships: [String!], $search: String, $sort: String = "", $space: String, $status: String, $type: String) {
+  documents {
+    _policies {
+      companyManageEmployeesFolders {
+        can
+        __typename
+      }
+      employeeManageAnyEmployeeFolder {
+        can
+        __typename
+      }
+      employeeManageDefaultEmployeeFolder {
+        can
+        __typename
+      }
+      __typename
+    }
+    documents(
+      id: $id
+      afterDate: $afterDate
+      beforeDate: $beforeDate
+      byBookkeeperDocuments: $byBookeeperDocuments
+      byPendingAssignment: $byPendingAssignment
+      byTrashBin: $byTrashBin
+      byWithoutFolder: $byWithoutFolder
+      companyId: $companyId
+      employeeId: $employeeId
+      employeeIds: $employeeIds
+      excludedType: $excludedType
+      folderId: $folderId
+      fromEmployees: $fromEmployees
+      ids: $ids
+      incidenceId: $incidenceId
+      leaveId: $leaveId
+      payrollHiringId: $payrollHiringId
+      relationships: $relationships
+      search: $search
+      sort: $sort
+      space: $space
+      status: $status
+      type: $type
+    ) {
+      ...DocumentsDocumentItem
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment DocumentsDocumentItem on DocumentsDocument {
+  id
+  _policies {
+    edit {
+      can
+      __typename
+    }
+    __typename
+  }
+  arCreatedAt
+  author {
+    id
+    fullName
+    __typename
+  }
+  company {
+    id
+    __typename
+  }
+  contentType
+  deletedAt
+  employee {
+    id
+    fullName
+    __typename
+  }
+  extension
+  file
+  filename
+  fileSize
+  fileUrl
+  folder {
+    id
+    name
+    rootParentFolder {
+      id
+      name
+      __typename
+    }
+    showOnly
+    __typename
+  }
+  fromTemplate
+  incidenceMessageId
+  isCompanyDocument
+  isPendingAssignment
+  leaveId
+  notificationStatus
+  permissionUpdate
+  public
+  signatureStatus
+  signees
+  space
+  status
+  templateId
+  type
+  createdAt
+  updatedAt
+  __typename
+}
