@@ -1,4 +1,14 @@
-Created with gradle_java
+# doc-dl
+
+Run without compile: `./gradlew run`
+
+Build: `./gradlew assembleDist`
+
+Jar located at: `build/libs`
+
+Run jar: `java -jar build/libs/doc-dl-*.jar`
+
+# Notes
 
 Previous commit history is at fhr-export-old
 

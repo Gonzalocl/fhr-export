@@ -1,2 +1,1 @@
-rootProject.name = 'doc-dl'
-
+rootProject.name = "doc-dl"
