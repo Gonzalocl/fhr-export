@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URISyntaxException;
@@ -267,6 +268,13 @@ public class App {
     }
 
     public static Path getResourcePath(String name) throws URISyntaxException {
+        InputStream resourceAsStream = classLoader.getResourceAsStream(name);
+        System.out.println(resourceAsStream);
+        try {
+            System.out.println(new String(resourceAsStream.readAllBytes()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return Path.of(classLoader.getResource(name).toURI());
     }
 
